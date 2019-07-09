@@ -1,0 +1,45 @@
+<%- include("header.html")%>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Api列表</h2>
+    </div>
+</div>
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+
+            <a href="/admin/Api" type="button" class="btn btn-primary">古诗词</a>
+            <a href="/admin/Api/Name" type="button" class="btn btn-primary">个性网名</a>
+            <a href="/admin/Api/Img" type="button" class="btn btn-primary">图片</a>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>城市ID</th>
+                    <th>城市名</th>
+                </tr>
+            </thead>
+            <tbody style="table-layout:fixed;">
+                <%result.forEach(function(item,index){%>
+                <tr>
+                    <td><%= index+1%></td>                  
+                    <td><%= item.id%></td>
+                    <td><%= item.name%></td>
+                    <td>
+                        <a href="ApiCity/del?id=<%= item._id%>" class="btn btn-danger">删除</a>                       
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <!-- 分类static -->
+            <div class="btn-group">
+                <%for(var i = 0; i < pageCount; i++){%>
+                <a href="City?page=<%= i%>" class="btn btn-white "><%= i+1%></a>
+                <% } %>
+            </div>
+        <!-- 分类end -->
+    </div>
+</div>
+<%- include("footer.html")%>
